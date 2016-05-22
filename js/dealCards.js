@@ -23,8 +23,8 @@ var app = app || {};
         var card = document.createElement("div");
         card.className = 'card';
         card.id = 'card' + i;
-        card.top = 50 + 300 * Math.floor(i/3);
-        card.left = 250 + 100 * (i%3);
+        card.top = 50 + 300 * Math.floor( i / 3 );
+        card.left = 200 + 100 * ( i % 3 );
 
         document.getElementById('table').appendChild(card);
         cards.push(card);
