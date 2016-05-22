@@ -10,5 +10,9 @@
   {
     "outputFile": "css/flip.css",
     "inputFile": "css/flip.scss"
+  },
+  {
+    "outputFile": "css/dissappear-effect.css",
+    "inputFile": "css/dissappear-effect.scss"
   }
 ]
