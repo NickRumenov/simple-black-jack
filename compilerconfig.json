@@ -6,5 +6,9 @@
   {
     "outputFile": "css/style.css",
     "inputFile": "css/style.scss"
+  },
+  {
+    "outputFile": "css/flip.css",
+    "inputFile": "css/flip.scss"
   }
 ]
