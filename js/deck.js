@@ -1,6 +1,7 @@
 var app = app || {},
     random,
-    currentCard;
+    currentCard,
+        j, i;
 
 app.deck = [
     { id: "card0", type: "2", suit: "H", x: 0, y: 0 },
@@ -60,8 +61,8 @@ app.deck = [
     { id: "card51", type: "A", suit: "S", x: 99.99, y: 75 }
 ];
 
-for (var i = 0; i < 5; i++) {
-    for (var j = app.deck.length - 1; j > 0; j--) {
+for (i = 0; i < 5; i++) {
+    for (j = app.deck.length - 1; j > 0; j--) {
         random = Math.floor(Math.random() * j);
         currentCard = app.deck[j];
         app.deck[j] = app.deck[random];

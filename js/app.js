@@ -3,7 +3,7 @@ var app = app || {},
 
 (function (current) {
     function init() {
-        
+
         var cards = [],
             i, card, currentCard;
 
@@ -46,7 +46,6 @@ var app = app || {},
         }
 
         for (var i = n; i < 5; i++) {
-
             currentCard = document.getElementById('card' + i);
             currentCard.style.backgroundPositionX = app.deck[i].x + '%';
             currentCard.style.backgroundPositionY = app.deck[i].y + '%';
