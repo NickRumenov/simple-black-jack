@@ -7,7 +7,7 @@ var app = app || {},
         var cards = [],
             i, card, currentCard;
 
-        // This boolean changes variable values between first dealing and player dealing cards.
+        // This boolean changes variable values between first dealing and player dealing cards. Fixed DRY.
         if (!madeFirstDistribution) {
             app.deck = app.deck.slice(5, 52);
             n = 0;
@@ -49,6 +49,15 @@ var app = app || {},
             currentCard = document.getElementById('card' + i);
             currentCard.style.backgroundPositionX = app.deck[i].x + '%';
             currentCard.style.backgroundPositionY = app.deck[i].y + '%';
+        }
+
+        // TODO - find better solution of bug fixing
+        // Fixing bug with needless dom elements
+        var card5 = document.getElementById('card5');
+        if (card5.nextSibling) {
+            for (i = 0; i < 3; i++) {
+                card5.nextSibling.remove();
+            }
         }
 
         madeFirstDistribution = true;
