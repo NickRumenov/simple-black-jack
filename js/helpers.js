@@ -1,25 +1,20 @@
-﻿var app = app || {};
+﻿// Pure JS Event Delegation
 
-//TODO   To fix DRY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+document.getElementById("table").addEventListener("click", function (e) {
+    var lastIdNum,
+        currentId = 'card';
 
-var card3 = document.getElementById("card3");
-var card4 = document.getElementById("card4");
+    if (e.target && e.target.nodeName == "DIV") {
+        if (e.target.id === 'card3') {
+            lastIdNum = '3';
+        }else if (e.target.id === 'card4') {
+            lastIdNum = '4';
+        }
+        currentId += lastIdNum
 
-var card3Back = document.createElement("div");
-var card4Back = document.createElement("div");
-
-document.getElementById("card3").addEventListener("click", function () {
-    document.getElementById("card3").className = 'animated bounceOutLeft';
-    setTimeout(function () {
-        document.getElementById("card3").remove();
-    }, 1000);
+        document.getElementById(currentId).className = 'animated bounceOutLeft';
+        setTimeout(function () {
+            document.getElementById("card4").remove();
+        }, 1000);
+    }
 });
-
-document.getElementById("card4").addEventListener("click", function () {
-    document.getElementById("card4").className = 'animated bounceOutLeft';
-    setTimeout(function () {
-        document.getElementById("card4").remove();
-    }, 1000);
-});
-
-

@@ -1,20 +1,22 @@
-var app = app || {};
+var app = app || {},
+    madeFirstDistribution = false,
+    init;
 
-var madeFirstDistribution = false;
-
-var init = function () {
+init = function () {
+    var cards = [],
+        i, card, currentCard;
 
     if (!madeFirstDistribution) {
         app.deck = app.deck.slice(5, 52);
         n = 0;
+        toPostDeckCard = 6;
     } else {
         app.deck = app.deck.slice(2, 52);
         document.getElementById('card3').remove();
         document.getElementById('card4').remove();
         n = 3;
+        toPostDeckCard = 5;
     }
-
-    var cards = [];
 
     for (i = n; i < 5; i++) {
         (function (id) {
@@ -30,8 +32,7 @@ var init = function () {
         })(i);
     }
 
-    for (var i = 0; i < 6; i++) {
-
+    for (i = 0; i < toPostDeckCard; i++) {
         var card = document.createElement("div");
         card.className = 'card';
         card.id = 'card' + i;
@@ -42,11 +43,11 @@ var init = function () {
     }
 
     for (var i = n; i < 5; i++) {
-        var currentCard = document.getElementById('card' + i);
+        currentCard = document.getElementById('card' + i);
         currentCard.style.backgroundPositionX = app.deck[i].x + '%';
         currentCard.style.backgroundPositionY = app.deck[i].y + '%';
     }
-    
+
     madeFirstDistribution = true;
 }
 
