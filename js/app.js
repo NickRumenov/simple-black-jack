@@ -6,7 +6,7 @@ var app = app || {};
 
     function init() {
 
-        var i, card, currentCard;
+        var i, card, currentCard, card5;
         cards.length = 0;
 
         // This boolean changes values of variables between first dealing and player dealing cards. + Fixed DRY.
@@ -48,11 +48,12 @@ var app = app || {};
             currentCard = document.getElementById('card' + i);
             currentCard.style.backgroundPositionX = app.deck[i].x + '%';
             currentCard.style.backgroundPositionY = app.deck[i].y + '%';
+            currentCard.style.backgroundPosition = app.deck[i].x + '%' + app.deck[i].y + '%';
         }
 
         // TODO - to find better solution for bug fixing
         // Fixing bug with needless dom elements
-        var card5 = document.getElementById('card5');
+        card5 = document.getElementById('card5');
         if (card5.nextSibling) {
             for (i = 0; i < 3; i++) {
                 card5.nextSibling.remove();
