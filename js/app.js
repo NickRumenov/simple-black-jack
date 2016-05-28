@@ -2,12 +2,14 @@ var app = app || {};
 
 (function (current) {
     var madeFirstDistribution = false;
+    var cards = [];
 
     function init() {
 
-        var cards = [],
-            i, card, currentCard;
+        cards.length = 0;
+        var i, card, currentCard;
 
+        
         // This boolean changes values of variables between first dealing and player dealing cards. + Fixed DRY.
         if (!madeFirstDistribution) {
             app.deck = app.deck.slice(5, 52);
@@ -27,6 +29,8 @@ var app = app || {};
                     var currentCard = cards[id];
                     currentCard.style.top = cards[id].top + 'px';
                     currentCard.style.left = cards[id].left + 'px';
+                    console.log(cards[id].top);
+                    console.log(cards[id].left);
                     currentCard.style.WebkitTransform = "rotate(360deg)";
                     currentCard.style.MozTransform = "rotate(360deg)";
                     currentCard.style.OTransform = "rotate(360deg)";
