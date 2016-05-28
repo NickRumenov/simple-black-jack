@@ -1,23 +1,24 @@
-var app = app || {},
-    madeFirstDistribution = false;
+var app = app || {};
 
 (function (current) {
+    var madeFirstDistribution = false;
+
     function init() {
 
         var cards = [],
             i, card, currentCard;
 
-        // This boolean changes variable values between first dealing and player dealing cards. Fixed DRY.
+        // This boolean changes values of variables between first dealing and player dealing cards. + Fixed DRY.
         if (!madeFirstDistribution) {
             app.deck = app.deck.slice(5, 52);
             n = 0;
-            toPostDeckCard = 6;
+            toPostDeckTopCard = 6;
         } else {
             app.deck = app.deck.slice(2, 52);
             document.getElementById('card3').remove();
             document.getElementById('card4').remove();
             n = 3;
-            toPostDeckCard = 5;
+            toPostDeckTopCard = 5;
         }
 
         for (i = n; i < 5; i++) {
@@ -35,8 +36,8 @@ var app = app || {},
         }
 
         // Set target position of cards.
-        for (i = 0; i < toPostDeckCard; i++) {
-            var card = document.createElement("div");
+        for (i = 0; i < toPostDeckTopCard; i++) {
+            card = document.createElement("div");
             card.className = 'card';
             card.id = 'card' + i;
             card.top = 50 + 300 * Math.floor(i / 3);
@@ -45,13 +46,13 @@ var app = app || {},
             cards.push(card);
         }
 
-        for (var i = n; i < 5; i++) {
+        for (i = n; i < 5; i++) {
             currentCard = document.getElementById('card' + i);
             currentCard.style.backgroundPositionX = app.deck[i].x + '%';
             currentCard.style.backgroundPositionY = app.deck[i].y + '%';
         }
 
-        // TODO - find better solution of bug fixing
+        // TODO - to find better solution for bug fixing
         // Fixing bug with needless dom elements
         var card5 = document.getElementById('card5');
         if (card5.nextSibling) {
@@ -63,7 +64,7 @@ var app = app || {},
         madeFirstDistribution = true;
     };
 
-    current.init = init();
+    init();
     current.init = function () {
         return init();
     }

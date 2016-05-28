@@ -1,4 +1,4 @@
-﻿// Pure JS Event Delegation
+﻿// Pure Event Delegation
 
 document.getElementById("table").addEventListener("click", function (e) {
     var lastIdNum,
