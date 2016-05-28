@@ -35,7 +35,7 @@ var app = app || {};
 
         for (i = n; i < 5; i++) {
             (function (id) {
-                setTimeout(function () {
+                setTimeout(function a() {
                     var currentCard = cards[id];
                     currentCard.style.top = cards[id].top + 'px';
                     currentCard.style.left = cards[id].left + 'px';
@@ -46,8 +46,6 @@ var app = app || {};
                 }, i * 100);
             })(i);
             currentCard = document.getElementById('card' + i);
-            currentCard.style.backgroundPositionX = app.deck[i].x + '%';
-            currentCard.style.backgroundPositionY = app.deck[i].y + '%';
             currentCard.style.backgroundPosition = app.deck[i].x + '%' + app.deck[i].y + '%';
         }
 
