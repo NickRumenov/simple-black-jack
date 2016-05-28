@@ -1,15 +1,14 @@
 var app = app || {};
 
 (function (current) {
-    var madeFirstDistribution = false;
-    var cards = [];
+    var madeFirstDistribution = false,
+    cards = [];
 
     function init() {
 
-        cards.length = 0;
         var i, card, currentCard;
+        cards.length = 0;
 
-        
         // This boolean changes values of variables between first dealing and player dealing cards. + Fixed DRY.
         if (!madeFirstDistribution) {
             app.deck = app.deck.slice(5, 52);
@@ -21,22 +20,6 @@ var app = app || {};
             document.getElementById('card4').remove();
             n = 3;
             toPostDeckTopCard = 5;
-        }
-
-        for (i = n; i < 5; i++) {
-            (function (id) {
-                setTimeout(function () {
-                    var currentCard = cards[id];
-                    currentCard.style.top = cards[id].top + 'px';
-                    currentCard.style.left = cards[id].left + 'px';
-                    console.log(cards[id].top);
-                    console.log(cards[id].left);
-                    currentCard.style.WebkitTransform = "rotate(360deg)";
-                    currentCard.style.MozTransform = "rotate(360deg)";
-                    currentCard.style.OTransform = "rotate(360deg)";
-                    currentCard.style.msTransform = "rotate(360deg)";
-                }, i * 100);
-            })(i);
         }
 
         // Set target position of cards.
@@ -51,6 +34,17 @@ var app = app || {};
         }
 
         for (i = n; i < 5; i++) {
+            (function (id) {
+                setTimeout(function () {
+                    var currentCard = cards[id];
+                    currentCard.style.top = cards[id].top + 'px';
+                    currentCard.style.left = cards[id].left + 'px';
+                    currentCard.style.WebkitTransform = "rotate(360deg)";
+                    currentCard.style.MozTransform = "rotate(360deg)";
+                    currentCard.style.OTransform = "rotate(360deg)";
+                    currentCard.style.msTransform = "rotate(360deg)";
+                }, i * 100);
+            })(i);
             currentCard = document.getElementById('card' + i);
             currentCard.style.backgroundPositionX = app.deck[i].x + '%';
             currentCard.style.backgroundPositionY = app.deck[i].y + '%';
